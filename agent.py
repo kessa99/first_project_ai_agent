@@ -95,15 +95,15 @@ system_prompt = """
 #     prompt=system_prompt,
 # )
 
-GROK = ChatOpenAI(
-    model="grok-3",
-    api_key=os.getenv("GROK_API_KEY"),
-    base_url="https://api.x.ai/v1",
+model = ChatOpenAI(
+    model="mistralai/mistral-large",
+    api_key=os.getenv("OPEN_ROUTER"),
+    base_url="https://openrouter.ai/api/v1",
     temperature=0.0,
 )
 
 agent = create_react_agent(
-    model=GROK,
+    model=model,
     tools=[research_tool, vital_charge, salary, get_current_date],
     prompt=system_prompt,
 )
